@@ -149,7 +149,8 @@ void MuseScore::updateInputState(Score* score)
       getAction("beam-mid")->setChecked(is.beamMode()   == Beam::Mode::MID);
       getAction("no-beam")->setChecked(is.beamMode()    == Beam::Mode::NONE);
       getAction("beam32")->setChecked(is.beamMode()     == Beam::Mode::BEGIN32);
-      getAction("auto-beam")->setChecked(is.beamMode()  == Beam::Mode::AUTO);
+      getAction("beam64")->setChecked(is.beamMode()     == Beam::Mode::BEGIN64);
+      getAction("beam-auto")->setChecked(is.beamMode()  == Beam::Mode::AUTO);
 
       if(is.noteEntryMode() && !is.rest())
             updateShadowNote();
