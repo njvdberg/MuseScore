@@ -38,6 +38,7 @@
 #include "palette.h"
 #include "palettebox.h"
 #include "palette/palettemodel.h"
+#include "palette/palettewidget.h"
 #include "palette/paletteworkspace.h"
 #include "libmscore/part.h"
 #include "libmscore/drumset.h"
@@ -207,6 +208,8 @@ QString styleName;
 QString revision;
 QErrorMessage* errorMessage;
 const char* voiceActions[] = { "voice-1", "voice-2", "voice-3", "voice-4" };
+
+bool mscoreFirstStart = false;
 
 const std::list<const char*> MuseScore::_allNoteInputMenuEntries {
             "note-input",
@@ -2294,6 +2297,9 @@ void MuseScore::selectionChanged(SelState selectionState)
 
 void MuseScore::updatePaletteBeamMode(bool unselect)
       {
+      if (paletteWorkspace)
+            paletteWorkspace->updateCellsState(cs->selection(), unselect);
+#if 0 // old palettes code
       for (Palette* p : paletteBox->palettes()) {
             if (p->name() == "Beam Properties") {
                   if (unselect) {
@@ -2344,6 +2350,7 @@ void MuseScore::updatePaletteBeamMode(bool unselect)
                   p->update();
                   }
             }
+#endif
       }
 
 //---------------------------------------------------------
@@ -5864,13 +5871,10 @@ void MuseScore::cmd(QAction* a)
             return;
             }
       if (cmdn == "palette-search") {
-            PaletteBox* pb = getPaletteBox();
-            QLineEdit* sb = pb->searchBox();
-            sb->setFocus();
-            if (pb->noSelection())
-                  pb->setKeyboardNavigation(false);
-            else
-                  pb->setKeyboardNavigation(true);
+            // TODO: use new search box, or rename command to just "palette"
+            showPalette(true);
+            if (paletteWidget)
+                  paletteWidget->setFocus();
             return;
             }
       if (cmdn == "apply-current-palette-element") {
@@ -6000,7 +6004,7 @@ void MuseScore::endCmd()
             selectionChanged(SelState::NONE);
             }
       updateInspector();
-      if (cv && paletteBox)
+      if (cv)
             updatePaletteBeamMode(cv->clickOffElement);
       }
 
@@ -7718,6 +7722,7 @@ int main(int argc, char* av[])
 
       if (!MScore::noGui) {
             if (preferences.getBool(PREF_APP_STARTUP_FIRSTSTART)) {
+                  mscoreFirstStart = true;
                   StartupWizard* sw = new StartupWizard;
                   sw->exec();
                   preferences.setPreference(PREF_APP_STARTUP_FIRSTSTART, false);
