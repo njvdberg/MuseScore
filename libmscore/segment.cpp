@@ -37,6 +37,8 @@
 #include "xml.h"
 #include "undo.h"
 #include "harmony.h"
+#include "dynamic.h"
+#include "dynrangefilter.h"
 
 namespace Ms {
 
@@ -914,7 +916,7 @@ bool Segment::setProperty(Pid propertyId, const QVariant& v)
             case Pid::LEADING_SPACE:
                   setExtraLeadingSpace(v.value<Spatium>());
                   for (Element* e : _elist) {
-                        if(e) 
+                        if(e)
                               e->setGenerated(false);
                         }
                   break;
@@ -1250,7 +1252,7 @@ Element* Segment::nextAnnotation(Element* e)
       auto resIt = std::find_if(ei + 1, _annotations.end(), [e](Element* nextElem){
             return nextElem && nextElem->staffIdx() == e->staffIdx();
             });
-      
+
       return _annotations.end() == resIt ? nullptr : *resIt;
       }
 
@@ -1271,7 +1273,7 @@ Element* Segment::prevAnnotation(Element* e)
       auto resIt = std::find_if(reverseIt + 1, _annotations.rend(), [e](Element* prevElem){
             return prevElem && prevElem->staffIdx() == e->staffIdx();
             });
-      
+
       return _annotations.rend() == resIt ? nullptr : *resIt;
       }
 
@@ -1937,8 +1939,27 @@ Element* Segment::lastInPrevSegments(int activeStaff)
       }
 
 //---------------------------------------------------------
+//   activeDynamic
+//---------------------------------------------------------
+
+Dynamic* Segment::activeDynamic(int track, bool voiceToPart) const
+      {
+      DynRangeFilter<Dynamic> drf {score(), track, voiceToPart };
+      for (Element* e : annotations()) {
+            if (!(e && e->isDynamic()))
+                  continue;
+
+            if (drf.addElement(toDynamic(e)))
+                  break;
+
+            }
+      return drf.active();
+      }
+
+//---------------------------------------------------------
 //   accessibleExtraInfo
 //---------------------------------------------------------
+
 
 QString Segment::accessibleExtraInfo() const
       {

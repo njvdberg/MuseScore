@@ -38,6 +38,7 @@ class SpannerMap : std::multimap<int, Spanner*> {
       std::multimap<int,Spanner*>::const_reverse_iterator crend() const   { return std::multimap<int, Spanner*>::crend(); }
       std::multimap<int,Spanner*>::const_iterator cbegin() const { return std::multimap<int, Spanner*>::cbegin(); }
       std::multimap<int,Spanner*>::const_iterator cend() const  { return std::multimap<int, Spanner*>::cend(); }
+      using std::multimap<int, Spanner*>::equal_range;
       void addSpanner(Spanner* s);
       bool removeSpanner(Spanner* s);
       void clear() { std::multimap<int, Spanner*>::clear(); dirty = true; }

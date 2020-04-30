@@ -42,6 +42,7 @@
 #include "barline.h"
 #include "undo.h"
 #include "bracketItem.h"
+#include "hairpin.h"
 
 namespace Ms {
 
@@ -190,7 +191,7 @@ void Excerpt::createExcerpt(Excerpt* excerpt)
             excerpt->setTracks(tracks);
             }
 
-      cloneStaves(oscore, score, srcStaves, excerpt->tracks());
+      cloneStaves(oscore, score, srcStaves, excerpt->tracks(), excerpt->isVoiceToPart());
 
       // create excerpt title and title frame for all scores if not already there
       MeasureBase* measure = oscore->first();
@@ -433,7 +434,7 @@ static void cloneTuplets(ChordRest* ocr, ChordRest* ncr, Tuplet* ot, TupletMap& 
 //   cloneStaves
 //---------------------------------------------------------
 
-void Excerpt::cloneStaves(Score* oscore, Score* score, const QList<int>& map, QMultiMap<int, int>& trackList)
+void Excerpt::cloneStaves(Score* oscore, Score* score, const QList<int>& map, QMultiMap<int, int>& trackList, bool voiceToPart)
       {
       TieMap  tieMap;
 
@@ -487,25 +488,39 @@ void Excerpt::cloneStaves(Score* oscore, Score* score, const QList<int>& map, QM
                               for (Element* e : oseg->annotations()) {
                                     if (e->generated())
                                           continue;
-                                    if ((e->track() == srcTrack && strack != -1) || (e->systemFlag() && srcTrack == 0)) {
-                                          Element* ne = e->linkedClone();
-                                          // reset offset as most likely it will not fit
-                                          PropertyFlags f = ne->propertyFlags(Pid::OFFSET);
-                                          if (f == PropertyFlags::UNSTYLED) {
-                                                ne->setPropertyFlags(Pid::OFFSET, PropertyFlags::STYLED);
-                                                ne->resetProperty(Pid::OFFSET);
+                                    Element* ne { nullptr };
+                                    if (e->isDynamic() && (strack != -1)) {
+                                          Dynamic* ad = oseg->activeDynamic(srcTrack, voiceToPart);
+                                          if (!ad)
+                                                break;
+                                          ne = ad->linkedClone();
+
+                                          // For voice-to-part, reset placement.
+                                          if (voiceToPart && (ne->propertyFlags(Pid::PLACEMENT) == PropertyFlags::UNSTYLED)) {
+                                                ne->setPropertyFlags(Pid::PLACEMENT, PropertyFlags::STYLED);
+                                                ne->resetProperty(Pid::PLACEMENT);
                                                 }
-                                          ne->setTrack(strack == -1 ? 0 : strack);
-                                          ne->setScore(score);
-                                          if (!ns)
-                                                ns = nm->getSegment(oseg->segmentType(), oseg->tick());
-                                          ns->add(ne);
-                                          // for chord symbols,
-                                          // re-render with new style settings
-                                          if (ne->isHarmony()) {
-                                                Harmony* h = toHarmony(ne);
-                                                h->render();
-                                                }
+                                          }
+                                    else if ((e->track() == srcTrack && strack != -1) || (e->systemFlag() && srcTrack == 0))
+                                          ne = e->linkedClone();
+                                    else
+                                          break;
+                                    // reset offset as most likely it will not fit
+                                    PropertyFlags f = ne->propertyFlags(Pid::OFFSET);
+                                    if (f == PropertyFlags::UNSTYLED) {
+                                          ne->setPropertyFlags(Pid::OFFSET, PropertyFlags::STYLED);
+                                          ne->resetProperty(Pid::OFFSET);
+                                          }
+                                    ne->setTrack(strack == -1 ? 0 : strack);
+                                    ne->setScore(score);
+                                    if (!ns)
+                                          ns = nm->getSegment(oseg->segmentType(), oseg->tick());
+                                    ns->add(ne);
+                                    // for chord symbols,
+                                    // re-render with new style settings
+                                    if (ne->isHarmony()) {
+                                          Harmony* h = toHarmony(ne);
+                                          h->render();
                                           }
                                     }
 
@@ -773,6 +788,7 @@ void Excerpt::cloneStaves(Score* oscore, Score* score, const QList<int>& map, QM
                   }
             }
 
+      QSet<int> hairpinsDone;
       for (auto i : oscore->spanner()) {
             Spanner* s    = i.second;
             int dstTrack  = -1;
@@ -785,18 +801,29 @@ void Excerpt::cloneStaves(Score* oscore, Score* score, const QList<int>& map, QM
                   cloneSpanner(s, score, dstTrack, dstTrack2);
                   }
             else if (s->isHairpin()) {
-                  //always export these spanners to first voice of the destination staff
+                  // Prevent processing hairpins at the same tick!
+                  if (hairpinsDone.contains(i.first))
+                        continue;
 
-                  QList<int> track1;
-                  for (int ii = s->track(); ii < s->track() + VOICES; ii++) {
-                        track1 += trackList.values(ii);
+                  for (int otrack { 0 }; otrack < oscore->ntracks(); ++otrack) {
+                        Hairpin* h = oscore->activeHairpin(s->tick(), otrack, voiceToPart);
+                        if (!h)
+                              continue;
+                        QList<int> tracks = trackList.values(otrack);
+                        for (int ii { 0 }; ii < tracks.length(); ++ii) {
+                              // For voice-to-part, reset placement.
+                              Hairpin* ht = h->clone();
+                              if (voiceToPart && (ht->propertyFlags(Pid::PLACEMENT) == PropertyFlags::UNSTYLED)) {
+                                    ht->setPropertyFlags(Pid::PLACEMENT, PropertyFlags::STYLED);
+                                    ht->resetProperty(Pid::PLACEMENT);
+                                    }
+
+                              dstTrack  = tracks.at(ii);
+                              cloneSpanner(ht, score, dstTrack, dstTrack);
+                              delete ht;
+                              }
                         }
-
-                  for (int track : track1) {
-                        if (!(track % VOICES))
-                              cloneSpanner(s, score, track, track);
-                        }
-
+                  hairpinsDone.insert(i.first);
                   }
             else {
                   if (trackList.value(s->track(), -1) == -1 || trackList.value(s->track2(), -1) == -1)
@@ -931,7 +958,7 @@ void Excerpt::cloneStaff(Staff* srcStaff, Staff* dstStaff)
                                                       tie->setEndNote(nn);
                                                       }
                                                 else {
-                                                      qDebug("cloneStave: cannot find tie");
+                                                      qDebug("cloneStaff: cannot find tie");
                                                       }
                                                 }
                                           // add back spanners (going back from end to start spanner element
@@ -945,7 +972,7 @@ void Excerpt::cloneStaff(Staff* srcStaff, Staff* dstStaff)
                                                       score->addElement(newSp);
                                                       }
                                                 else {
-                                                      qDebug("cloneStave: cannot find spanner start note");
+                                                      qDebug("cloneStaff: cannot find spanner start note");
                                                       }
                                                 }
                                           }
@@ -1138,7 +1165,7 @@ void Excerpt::cloneStaff2(Staff* srcStaff, Staff* dstStaff, const Fraction& stic
                                                       tie->setEndNote(nn);
                                                       }
                                                 else {
-                                                      qDebug("cloneStave: cannot find tie");
+                                                      qDebug("cloneStaff2: cannot find tie");
                                                       }
                                                 }
                                           }
@@ -1215,6 +1242,39 @@ QString Excerpt::createName(const QString& partName, QList<Excerpt*>& excerptLis
 
       return name;
       }
+
+//---------------------------------------------------------
+//   isVoiceToPart
+//    returns false if
+//          not all tracks of the parts are mapped
+//        and
+//          mapping per track is not sequentially
+//---------------------------------------------------------
+
+bool Excerpt::isVoiceToPart() const
+      {
+      int nstaves { 0 };
+      for (Part* p : _parts)
+            nstaves += p->nstaves();
+
+      if ((nstaves * VOICES) != _tracks.size())
+            return true;
+
+      int count { 0 };
+      int offset { 0 };
+      QMapIterator<int, int> i( _tracks);
+      while (i.hasNext()) {
+            i.next();
+            if (count % VOICES) {
+                  if ((i.key() - i.value() != offset))
+                        return true;
+                  else
+                        offset = i.key() - i.value();
+                  }
+            }
+      return false;
+      }
+
 
 //---------------------------------------------------------
 //   setPartScore

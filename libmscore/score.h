@@ -785,6 +785,9 @@ class Score : public QObject, public ScoreElement {
       void updateStaffIndex();
       void sortStaves(QList<int>& dst);
 
+      int firstTrackOfPart(int track) const;
+      int lastTrackOfPart(int track) const;
+
       bool showInvisible() const       { return _showInvisible; }
       bool showUnprintable() const     { return _showUnprintable; }
       bool showFrames() const          { return _showFrames; }
@@ -1129,6 +1132,7 @@ class Score : public QObject, public ScoreElement {
       const std::set<Spanner*> unmanagedSpanners() { return _unmanagedSpanner; }
       void addUnmanagedSpanner(Spanner*);
       void removeUnmanagedSpanner(Spanner*);
+      Hairpin* activeHairpin(const Fraction&, int, bool) const;
 
       Hairpin* addHairpin(HairpinType, const Fraction& tickStart, const Fraction& tickEnd, int track);
       Hairpin* addHairpin(HairpinType, ChordRest* cr1, ChordRest* cr2 = nullptr, bool toCr2End = true);
@@ -1392,6 +1396,9 @@ class MasterScore : public Score {
       const Score* playbackScore() const { return _playbackScore; }
       Channel* playbackChannel(const Channel* c)             { return _midiMapping[c->channel()].articulation(); }
       const Channel* playbackChannel(const Channel* c) const { return _midiMapping[c->channel()].articulation(); }
+
+      void dumpStructure();
+      void dumpDynamics();
 
       MasterScore * unrollRepeats();
 

@@ -52,6 +52,7 @@ class Excerpt : public QObject {
 
       QMultiMap<int, int>& tracks()                  { return _tracks;    }
       void setTracks(const QMultiMap<int, int>& t)   { _tracks = t;       }
+      bool isVoiceToPart() const;
 
       MasterScore* oscore() const          { return _oscore;    }
       Score* partScore() const             { return _partScore; }
@@ -68,7 +69,7 @@ class Excerpt : public QObject {
       static QList<Excerpt*> createAllExcerpt(MasterScore* score);
       static QString createName(const QString& partName, QList<Excerpt*>&);
       static void createExcerpt(Excerpt*);
-      static void cloneStaves(Score* oscore, Score* score, const QList<int>& map, QMultiMap<int, int>& allTracks);
+      static void cloneStaves(Score* oscore, Score* score, const QList<int>& map, QMultiMap<int, int>& allTracks, bool voiceToPart);
       static void cloneStaff(Staff* ostaff, Staff* nstaff);
       static void cloneStaff2(Staff* ostaff, Staff* nstaff, const Fraction& stick, const Fraction& etick);
       };

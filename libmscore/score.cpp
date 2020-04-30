@@ -73,6 +73,8 @@
 #include "breath.h"
 #include "instrchange.h"
 #include "synthesizerstate.h"
+#include "spannermap.h"
+#include "dynrangefilter.h"
 
 namespace Ms {
 
@@ -2633,6 +2635,38 @@ void Score::sortStaves(QList<int>& dst)
       }
 
 //---------------------------------------------------------
+//   firstTrackOfPart
+//---------------------------------------------------------
+
+int Score::firstTrackOfPart(int track) const
+      {
+      int idx { 0 };
+      for (Part* p : _parts) {
+            if ((idx + p->nstaves()) <= (track >> 2))
+                  idx += p->nstaves();
+            else
+                  return idx * VOICES;
+            }
+      return -1;
+      }
+
+//---------------------------------------------------------
+//   lastTrackOfPart
+//---------------------------------------------------------
+
+int Score::lastTrackOfPart(int track) const
+      {
+      int idx { 0 };
+      for (Part* p : _parts) {
+            if ((idx + p->nstaves()) <= (track >> 2))
+                  idx += p->nstaves();
+            else
+                  return (idx + p->nstaves()) * VOICES - 1;
+            }
+      return -1;
+      }
+
+//---------------------------------------------------------
 //   cmdConcertPitchChanged
 //---------------------------------------------------------
 
@@ -3732,6 +3766,25 @@ void Score::removeUnmanagedSpanner(Spanner* s)
       }
 
 //---------------------------------------------------------
+//   activeHairpin
+//---------------------------------------------------------
+
+Hairpin* Score::activeHairpin(const Fraction& tick, int track, bool voiceToPart) const
+      {
+      DynRangeFilter<Hairpin> drf { score(), track, voiceToPart };
+      auto sr = _spanner.equal_range(tick.ticks());
+      for (auto i = sr.first; i != sr.second; ++i) {
+            if (!(i->second && i->second->isHairpin()))
+                  continue;
+
+            if (drf.addElement(toHairpin(i->second)))
+                  break;
+
+            }
+      return drf.active();
+      }
+
+//---------------------------------------------------------
 //   setPos
 //---------------------------------------------------------
 
@@ -4745,6 +4798,176 @@ void MasterScore::rebuildAndUpdateExpressive(Synthesizer* synth)
 bool Score::isTopScore() const
       {
       return !(isMaster() && static_cast<const MasterScore*>(this)->prev());
+      }
+
+//---------------------------------------------------------
+//   dumpStructure
+//---------------------------------------------------------
+
+void MasterScore::dumpStructure()
+      {
+      std::cout << "Dump Structure of MasterScore = " << this << '\n';
+
+      std::cout << "Scores:\n";
+      QList<Part*> scoreParts;
+      QList<Staff*> scoreStaves;
+      for (Score* s : scoreList()) {
+            std::cout << "  Score " << s << '\n';
+            if (s->parts().length() > 0) {
+                  std::cout << "    parts         =";
+                  bool first = true;
+                  for (Part* p : s->parts()) {
+                        std::cout << (first ? "  " : ", ") << p;
+                        first = false;
+                        scoreParts.append(p);
+                        }
+                  std::cout << '\n';
+                  }
+            else {
+                  std::cout << "    no parts\n";
+                  }
+            std::cout << "    staves        =";
+            if (s->staves().length() > 0) {
+                  bool first = true;
+                  for (Staff* st : s->staves()) {
+                        std::cout << (first ? "  " : ", ") << st;
+                        first = false;
+                        scoreStaves.append(st);
+                        }
+                  std::cout << '\n';
+                  }
+            else {
+                  std::cout << "    no staves\n";
+                  }
+            std::cout << '\n';
+            }
+
+      std::cout << '\n';
+
+      std::cout << "Excerpts:\n";
+      for (Excerpt* e : excerpts()) {
+            std::cout << "  Excerpt " << e << " : " << e->title().toStdString() << '\n';
+            std::cout << "    partScore     = " << e->partScore() << '\n';
+            std::cout << "    parts         ";
+            if (e->parts().length() > 0) {
+                  bool first = true;
+                  for (Part* p : e->parts()) {
+                        std::cout << (first ? "= " : ", ") << p;
+                        first = false;
+                        }
+                  std::cout << '\n';
+                  }
+            else {
+                  std::cout << "    no parts\n";
+                  }
+            if (e->tracks().isEmpty()) {
+                  std::cout << "    no track map\n";
+                  }
+            else {
+                  std::cout << "    track mapping ";
+                  QMapIterator<int, int> i(e->tracks());
+                  bool first = true;
+                  while (i.hasNext()) {
+                        i.next();
+                        std::cout << (first ? "= " : ", ") << i.key() << '/' << i.value();
+                        first = false;
+                        }
+
+                  }
+            std::cout << "\n\n";
+            }
+
+      std::cout << '\n';
+
+      std::cout << "Parts:\n";
+      QList<Part*> partList;
+      for (Part* p : scoreParts) {
+            if (partList.contains(p))
+                  continue;
+            partList.append(p);
+            std::cout << "  Part " << p << " : " << p->partName().toStdString() << " (instrument = " << p->longName().toStdString() << ")\n";
+            std::cout << "    score         = " << p->score() << '\n';
+            std::cout << "    staves        =";
+            if (p->nstaves() > 0) {
+                  for (int i { 0 }; i < p->nstaves(); ++i)
+                        std::cout << (!i ? " " : ", ") << p->staff(i);
+                  std::cout << '\n';
+                  }
+            else {
+                  std::cout << "    no staves\n";
+                  }
+            std::cout << '\n';
+            }
+
+      if (parts().length() > 0)
+            std::cout << '\n';
+
+      std::cout << "Staves:\n";
+      for (Staff* s : scoreStaves) {
+            std::cout << "  Staff " << s << '\n';
+            std::cout << "    score         = " << s->score() << '\n';
+            if (s->links() && (s->links()->length() > 0)) {
+                  std::cout << "    links         ";
+                  bool first = true;
+                  for (int j { 0 }; j < s->links()->length(); ++j) {
+                        if (s->links()->at(j) != s) {
+                              std::cout << (first ? "= " : ", ") << s->links()->at(j);
+                              if (s->links()->at(j)->score() == s->score())
+                                    std::cout << " (*)";
+                              first = false;
+                              }
+                        }
+                  std::cout << "\n\n";
+                  }
+            else {
+                  std::cout << "    not linked\n\n";
+                  }
+            }
+      }
+
+//---------------------------------------------------------
+//   dumpDynamics
+//---------------------------------------------------------
+
+void MasterScore::dumpDynamics()
+      {
+      const Selection sel = selection();
+      if (sel.isNone())
+            return;
+
+      std::cout << "Dump Dynamics\n";
+      for (Element* e : sel.elements()) {
+            std::cout << "  Element " << e << " (" << e->name() << ")\n";
+            Element* p = e->parent();
+            while (p && !p->isSegment())
+                  p = p->parent();
+
+            if (p) {
+                  Segment* s = toSegment(p);
+                  for (int track { 0 }; track < nstaves() * VOICES; ++track) {
+                        Dynamic* df = s->activeDynamic(track, false);
+                        Dynamic* dt = s->activeDynamic(track, true);
+                        std::cout << "    Dynamic for track "<< track << " ("
+                              << score()->firstTrackOfPart(track) << " - " << score()->lastTrackOfPart(track)
+                              << ") : " << df << " / " << dt << '\n';
+                        }
+                  }
+            else {
+                  std::cout << "    No segment found\n";
+                  }
+            }
+
+      std::cout << "Dump Hairpins\n";
+      for (Element* e : sel.elements()) {
+            std::cout << "  Element " << e << " (" << e->name() << " at " << e->tick().ticks() << ")\n";
+            for (int track { 0 }; track < nstaves() * VOICES; ++track) {
+                  Hairpin* hf = activeHairpin(e->tick(), track, false);
+                  Hairpin* ht = activeHairpin(e->tick(), track, true);
+                  std::cout << "    Hairpin for track " << track << " ("
+                        << score()->firstTrackOfPart(track) << " - " << score()->lastTrackOfPart(track)
+                        << ") : " << hf << " / " << ht << '\n';
+                  }
+            }
       }
 
 //---------------------------------------------------------

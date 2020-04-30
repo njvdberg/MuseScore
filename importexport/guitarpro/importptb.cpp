@@ -1308,7 +1308,7 @@ Score::FileError PowerTab::read()
             excerpt->parts().append(part);
             score->excerpts().append(excerpt);
 
-            Excerpt::cloneStaves(score, pscore, stavesMap, tracks);
+            Excerpt::cloneStaves(score, pscore, stavesMap, tracks, false);
 
             if (staff->part()->instrument()->stringData()->strings() > 0
                && part->staves()->front()->staffType(Fraction(0,1))->group() == StaffGroup::STANDARD) {

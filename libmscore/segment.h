@@ -16,6 +16,7 @@
 #include "element.h"
 #include "shape.h"
 #include "mscore.h"
+#include "dynamic.h"
 
 namespace Ms {
 
@@ -215,6 +216,7 @@ class Segment final : public Element {
       Element* nextElement(int activeStaff);
       using Element::prevElement;
       Element* prevElement(int activeStaff);
+      Dynamic* activeDynamic(int track, bool voiceToPart) const;
 
       std::vector<Shape> shapes()                     { return _shapes; }
       const std::vector<Shape>& shapes() const        { return _shapes; }
