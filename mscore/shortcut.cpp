@@ -3937,6 +3937,16 @@ Shortcut Shortcut::_sc[] = {
       {
          MsWidget::MAIN_WINDOW,
          STATE_ALL,
+         "dump-structure",
+         "Dump Structure",
+         "Dump Structure",
+         0,
+         Icons::Invalid_ICON,
+         Qt::ApplicationShortcut
+         },
+      {
+         MsWidget::MAIN_WINDOW,
+         STATE_ALL,
          "qml-reload-source",
          "Reload QML code",
          "Reload QML code",

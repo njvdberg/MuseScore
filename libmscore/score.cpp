@@ -4748,6 +4748,131 @@ bool Score::isTopScore() const
       }
 
 //---------------------------------------------------------
+//   dumpStructure
+//---------------------------------------------------------
+
+void MasterScore::dumpStructure()
+      {
+      std::cout << "Dump Structure of MasterScore = " << this << '\n';
+
+      std::cout << "Scores:\n";
+      QList<Part*> scoreParts;
+      QList<Staff*> scoreStaves;
+      for (Score* s : scoreList()) {
+            std::cout << "  Score " << s << '\n';
+            if (s->parts().length() > 0) {
+                  std::cout << "    parts         =";
+                  bool first = true;
+                  for (Part* p : s->parts()) {
+                        std::cout << (first ? "  " : ", ") << p;
+                        first = false;
+                        scoreParts.append(p);
+                        }
+                  std::cout << '\n';
+                  }
+            else {
+                  std::cout << "    no parts\n";
+                  }
+            std::cout << "    staves        =";
+            if (s->staves().length() > 0) {
+                  bool first = true;
+                  for (Staff* st : s->staves()) {
+                        std::cout << (first ? "  " : ", ") << st;
+                        first = false;
+                        scoreStaves.append(st);
+                        }
+                  std::cout << '\n';
+                  }
+            else {
+                  std::cout << "    no staves\n";
+                  }
+            std::cout << '\n';
+            }
+
+      std::cout << '\n';
+
+      std::cout << "Excerpts:\n";
+      for (Excerpt* e : excerpts()) {
+            std::cout << "  Excerpt " << e << " : " << e->title().toStdString() << '\n';
+            std::cout << "    partScore     = " << e->partScore() << '\n';
+            std::cout << "    parts         ";
+            if (e->parts().length() > 0) {
+                  bool first = true;
+                  for (Part* p : e->parts()) {
+                        std::cout << (first ? "= " : ", ") << p;
+                        first = false;
+                        }
+                  std::cout << '\n';
+                  }
+            else {
+                  std::cout << "    no parts\n";
+                  }
+            if (e->tracks().isEmpty()) {
+                  std::cout << "    no track map\n";
+                  }
+            else {
+                  std::cout << "    track mapping ";
+                  QMapIterator<int, int> i(e->tracks());
+                  bool first = true;
+                  while (i.hasNext()) {
+                        i.next();
+                        std::cout << (first ? "= " : ", ") << i.key() << '/' << i.value();
+                        first = false;
+                        }
+
+                  }
+            std::cout << "\n\n";
+            }
+
+      std::cout << '\n';
+
+      std::cout << "Parts:\n";
+      QList<Part*> partList;
+      for (Part* p : scoreParts) {
+            if (partList.contains(p))
+                  continue;
+            partList.append(p);
+            std::cout << "  Part " << p << " : " << p->partName().toStdString() << " (instrument = " << p->longName().toStdString() << ")\n";
+            std::cout << "    score         = " << p->score() << '\n';
+            std::cout << "    staves        =";
+            if (p->nstaves() > 0) {
+                  for (int i { 0 }; i < p->nstaves(); ++i)
+                        std::cout << (!i ? " " : ", ") << p->staff(i);
+                  std::cout << '\n';
+                  }
+            else {
+                  std::cout << "    no staves\n";
+                  }
+            std::cout << '\n';
+            }
+
+      if (parts().length() > 0)
+            std::cout << '\n';
+
+      std::cout << "Staves:\n";
+      for (Staff* s : scoreStaves) {
+            std::cout << "  Staff " << s << '\n';
+            std::cout << "    score         = " << s->score() << '\n';
+            if (s->links() && (s->links()->length() > 0)) {
+                  std::cout << "    links         ";
+                  bool first = true;
+                  for (int j { 0 }; j < s->links()->length(); ++j) {
+                        if (s->links()->at(j) != s) {
+                              std::cout << (first ? "= " : ", ") << s->links()->at(j);
+                              if (s->links()->at(j)->score() == s->score())
+                                    std::cout << " (*)";
+                              first = false;
+                              }
+                        }
+                  std::cout << "\n\n";
+                  }
+            else {
+                  std::cout << "    not linked\n\n";
+                  }
+            }
+      }
+
+//---------------------------------------------------------
 //   Movements
 //---------------------------------------------------------
 

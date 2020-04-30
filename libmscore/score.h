@@ -1393,6 +1393,8 @@ class MasterScore : public Score {
       Channel* playbackChannel(const Channel* c)             { return _midiMapping[c->channel()].articulation(); }
       const Channel* playbackChannel(const Channel* c) const { return _midiMapping[c->channel()].articulation(); }
 
+      void dumpStructure();
+
       MasterScore * unrollRepeats();
 
       QFileInfo* fileInfo()               { return &info; }
