@@ -778,6 +778,21 @@ bool Hairpin::setProperty(Pid id, const QVariant& v)
       }
 
 //---------------------------------------------------------
+//   undoChangeProperty
+//---------------------------------------------------------
+
+void Hairpin::undoChangeProperty(Pid id, const QVariant& v, PropertyFlags ps)
+      {
+      if (id == Pid::DYNAMIC_RANGE) {
+            std::cout << "Hairpin::undoChangeProperty: " << this << "dynamic range changed.\n";
+            TextLineBase::undoChangeProperty(id, v, ps);
+            }
+      else {
+            TextLineBase::undoChangeProperty(id, v, ps);
+            }
+      }
+
+//---------------------------------------------------------
 //   propertyDefault
 //---------------------------------------------------------
 

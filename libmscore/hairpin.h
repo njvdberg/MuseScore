@@ -134,10 +134,13 @@ class Hairpin final : public TextLineBase {
       QVariant getProperty(Pid id) const override;
       bool setProperty(Pid propertyId, const QVariant&) override;
       QVariant propertyDefault(Pid id) const override;
+      virtual void undoChangeProperty(Pid id, const QVariant& v, PropertyFlags ps) override;
       Pid propertyId(const QStringRef& xmlName) const override;
 
       QString accessibleInfo() const override;
       bool isLineType() const  { return _hairpinType == HairpinType::CRESC_LINE || _hairpinType == HairpinType::DECRESC_LINE; }
+
+      using ScoreElement::undoChangeProperty;
       };
 
 }     // namespace Ms

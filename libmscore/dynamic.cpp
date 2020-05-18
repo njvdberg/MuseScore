@@ -396,7 +396,7 @@ QRectF Dynamic::drag(EditData& ed)
 
 void Dynamic::undoSetDynRange(Range v)
       {
-      undoChangeProperty(Pid::DYNAMIC_RANGE, int(v));
+      TextBase::undoChangeProperty(Pid::DYNAMIC_RANGE, int(v));
       }
 
 //---------------------------------------------------------
@@ -504,6 +504,21 @@ QVariant Dynamic::propertyDefault(Pid id) const
                   return int(Speed::NORMAL);
             default:
                   return TextBase::propertyDefault(id);
+            }
+      }
+
+//---------------------------------------------------------
+//   undoChangeProperty
+//---------------------------------------------------------
+
+void Dynamic::undoChangeProperty(Pid id, const QVariant& v, PropertyFlags ps)
+      {
+      if (id == Pid::DYNAMIC_RANGE) {
+            std::cout << "Dynamic::undoChangeProperty: " << this << "dynamic range changed.\n";
+            TextBase::undoChangeProperty(id, v, ps);
+            }
+      else {
+            TextBase::undoChangeProperty(id, v, ps);
             }
       }
 

@@ -133,6 +133,7 @@ class Dynamic final : public TextBase {
       QVariant getProperty(Pid propertyId) const override;
       bool     setProperty(Pid propertyId, const QVariant&) override;
       QVariant propertyDefault(Pid id) const override;
+      virtual void undoChangeProperty(Pid id, const QVariant& v, PropertyFlags ps) override;
       Pid propertyId(const QStringRef& xmlName) const override;
       QString propertyUserValue(Pid) const override;
 
