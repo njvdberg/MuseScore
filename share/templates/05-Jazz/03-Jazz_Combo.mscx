@@ -9,6 +9,7 @@
       </Synthesizer>
     <Division>480</Division>
     <Style>
+      <enableVerticalSpread>1</enableVerticalSpread>
       <lyricsLineThickness>0.3</lyricsLineThickness>
       <lyricsOddFontFace>MuseJazz Text</lyricsOddFontFace>
       <lyricsEvenFontFace>MuseJazz Text</lyricsEvenFontFace>
@@ -119,7 +120,7 @@
           </StaffType>
         </Staff>
       <trackName>Trumpet</trackName>
-      <Instrument>
+      <Instrument id="bb-trumpet">
         <longName>Trumpet</longName>
         <shortName>Tpt.</shortName>
         <trackName>B♭ Trumpet</trackName>
@@ -187,7 +188,7 @@
           </StaffType>
         </Staff>
       <trackName>Alto Sax</trackName>
-      <Instrument>
+      <Instrument id="alto-saxophone">
         <longName>Alto Sax</longName>
         <shortName>Alto</shortName>
         <trackName>Alto Saxophone</trackName>
@@ -241,7 +242,7 @@
         <defaultTransposingClef>G</defaultTransposingClef>
         </Staff>
       <trackName>Tenor Sax</trackName>
-      <Instrument>
+      <Instrument id="tenor-saxophone">
         <longName>Tenor Sax</longName>
         <shortName>Tenor</shortName>
         <trackName>Tenor Saxophone</trackName>
@@ -296,7 +297,7 @@
         <defaultClef>F</defaultClef>
         </Staff>
       <trackName>Trombone</trackName>
-      <Instrument>
+      <Instrument id="trombone">
         <longName>Trombone</longName>
         <shortName>Tbn.</shortName>
         <trackName>Trombone</trackName>
@@ -348,7 +349,7 @@
         <defaultClef>G8vb</defaultClef>
         </Staff>
       <trackName>Guitar</trackName>
-      <Instrument>
+      <Instrument id="electric-guitar">
         <longName>Guitar</longName>
         <shortName>Gtr.</shortName>
         <trackName>Electric Guitar</trackName>
@@ -448,7 +449,7 @@
         <defaultClef>F</defaultClef>
         </Staff>
       <trackName>Piano</trackName>
-      <Instrument>
+      <Instrument id="piano">
         <longName>Piano</longName>
         <shortName>Piano</shortName>
         <trackName>Piano</trackName>
@@ -501,7 +502,7 @@
         <defaultTransposingClef>F</defaultTransposingClef>
         </Staff>
       <trackName>Bass</trackName>
-      <Instrument>
+      <Instrument id="acoustic-bass">
         <longName>Bass</longName>
         <shortName>Bass</shortName>
         <trackName>Acoustic Bass</trackName>
@@ -580,7 +581,7 @@
         <defaultClef>PERC</defaultClef>
         </Staff>
       <trackName>Drums</trackName>
-      <Instrument>
+      <Instrument id="drumset">
         <longName>Drums</longName>
         <shortName>Drums</shortName>
         <trackName>Drumset</trackName>

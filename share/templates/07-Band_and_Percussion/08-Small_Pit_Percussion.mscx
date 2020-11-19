@@ -9,6 +9,7 @@
       </Synthesizer>
     <Division>480</Division>
     <Style>
+      <enableVerticalSpread>1</enableVerticalSpread>
       <Spatium>1.45</Spatium>
       </Style>
     <showInvisible>1</showInvisible>
@@ -44,7 +45,7 @@
         <barLineSpan>1</barLineSpan>
         </Staff>
       <trackName>Electric Piano</trackName>
-      <Instrument>
+      <Instrument id="electric-piano">
         <longName>Electric Piano</longName>
         <shortName>El. Pno.</shortName>
         <trackName>Electric Piano</trackName>
@@ -108,7 +109,7 @@
         <defaultClef>F8vb</defaultClef>
         </Staff>
       <trackName>Electric Bass</trackName>
-      <Instrument>
+      <Instrument id="electric-bass">
         <longName>Electric Bass</longName>
         <shortName>El. B.</shortName>
         <trackName>Electric Bass</trackName>
@@ -169,7 +170,7 @@
         <barLineSpan>4</barLineSpan>
         </Staff>
       <trackName>Vibraphone 1</trackName>
-      <Instrument>
+      <Instrument id="vibraphone">
         <longName>Vibraphone 1</longName>
         <shortName>Vib. 1</shortName>
         <trackName>Vibraphone</trackName>
@@ -220,7 +221,7 @@
         <barLineSpan>3</barLineSpan>
         </Staff>
       <trackName>Vibraphone 2</trackName>
-      <Instrument>
+      <Instrument id="vibraphone">
         <longName>Vibraphone 2</longName>
         <shortName>Vib. 2</shortName>
         <trackName>Vibraphone</trackName>
@@ -272,7 +273,7 @@
         <barLineSpan>2</barLineSpan>
         </Staff>
       <trackName>Marimba 1</trackName>
-      <Instrument>
+      <Instrument id="marimba">
         <longName>Marimba 1</longName>
         <shortName>Mba. 1</shortName>
         <trackName>Marimba</trackName>
@@ -324,7 +325,7 @@
         <barLineSpan>1</barLineSpan>
         </Staff>
       <trackName>Marimba 2</trackName>
-      <Instrument>
+      <Instrument id="marimba">
         <longName>Marimba 2</longName>
         <shortName>Mba. 2</shortName>
         <trackName>Marimba</trackName>
@@ -376,7 +377,7 @@
         <defaultClef>F</defaultClef>
         </Staff>
       <trackName>Marimba 3</trackName>
-      <Instrument>
+      <Instrument id="marimba">
         <longName>Marimba 3</longName>
         <shortName>Mba. 3</shortName>
         <trackName>Marimba</trackName>
@@ -431,7 +432,7 @@
         <barLineSpan>3</barLineSpan>
         </Staff>
       <trackName>Glockenspiel</trackName>
-      <Instrument>
+      <Instrument id="glockenspiel">
         <longName>Glockenspiel</longName>
         <shortName>Glk.</shortName>
         <trackName>Glockenspiel</trackName>
@@ -488,7 +489,7 @@
         <barLineSpan>2</barLineSpan>
         </Staff>
       <trackName>Xylophone</trackName>
-      <Instrument>
+      <Instrument id="xylophone">
         <longName>Xylophone</longName>
         <shortName>Xyl.</shortName>
         <trackName>Xylophone</trackName>
@@ -545,7 +546,7 @@
         <barLineSpan>1</barLineSpan>
         </Staff>
       <trackName>Drumset</trackName>
-      <Instrument>
+      <Instrument id="drumset">
         <longName>Drumset</longName>
         <shortName>Drs.</shortName>
         <trackName>Drumset</trackName>
@@ -778,7 +779,7 @@
         <defaultClef>PERC</defaultClef>
         </Staff>
       <trackName>Auxiliary Percussion</trackName>
-      <Instrument>
+      <Instrument id="drumset">
         <longName>Aux. Perc.</longName>
         <shortName>Aux.</shortName>
         <trackName>Percussion</trackName>
@@ -985,7 +986,7 @@
         <barLineSpan>3</barLineSpan>
         </Staff>
       <trackName>Snare Drum</trackName>
-      <Instrument>
+      <Instrument id="snare-drum">
         <longName>Snare Drum</longName>
         <shortName>S.D.</shortName>
         <trackName>Snare Drum</trackName>
@@ -1125,7 +1126,7 @@
         <barLineSpan>2</barLineSpan>
         </Staff>
       <trackName>Quads</trackName>
-      <Instrument>
+      <Instrument id="marching-tenor-drums">
         <longName>Tenor Drums</longName>
         <shortName>T.D.</shortName>
         <trackName>Tenor Drums</trackName>
@@ -1342,7 +1343,7 @@
         <barLineSpan>1</barLineSpan>
         </Staff>
       <trackName>Bass Drums</trackName>
-      <Instrument>
+      <Instrument id="marching-bass-drums">
         <longName>Bass Drums</longName>
         <shortName>B.D.</shortName>
         <trackName>Bass Drums</trackName>
@@ -1474,7 +1475,7 @@
         <defaultClef>PERC</defaultClef>
         </Staff>
       <trackName>Cymbals</trackName>
-      <Instrument>
+      <Instrument id="marching-cymbals">
         <longName>Cymbals</longName>
         <shortName>Cym.</shortName>
         <trackName>Cymbals</trackName>

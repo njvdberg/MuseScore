@@ -9,6 +9,7 @@
       </Synthesizer>
     <Division>480</Division>
     <Style>
+      <enableVerticalSpread>1</enableVerticalSpread>
       <Spatium>1.664</Spatium>
       </Style>
     <showInvisible>1</showInvisible>
@@ -34,7 +35,7 @@
         <bracket type="0" span="2" col="0"/>
         </Staff>
       <trackName>Lead Vocals</trackName>
-      <Instrument>
+      <Instrument id="voice">
         <longName>Lead Vocals</longName>
         <shortName>L. Voc.</shortName>
         <trackName>Voice</trackName>
@@ -96,7 +97,7 @@
           </StaffType>
         </Staff>
       <trackName>Backing Vocals</trackName>
-      <Instrument>
+      <Instrument id="voice">
         <longName>Backing Vocals</longName>
         <shortName>Bk. Voc.</shortName>
         <trackName>Voice</trackName>
@@ -150,7 +151,7 @@
         <distOffset>1.5</distOffset>
         </Staff>
       <trackName>Lead Guitar</trackName>
-      <Instrument>
+      <Instrument id="electric-guitar">
         <longName>Lead Guitar</longName>
         <shortName>L. Gtr.</shortName>
         <trackName>Electric Guitar</trackName>
@@ -244,7 +245,7 @@
         <barLineSpan>1</barLineSpan>
         </Staff>
       <trackName>Rhythm Guitar</trackName>
-      <Instrument>
+      <Instrument id="electric-guitar">
         <longName>Rhythm Guitar</longName>
         <shortName>R. Gtr.</shortName>
         <trackName>Electric Guitar</trackName>
@@ -338,7 +339,7 @@
         <defaultTransposingClef>F</defaultTransposingClef>
         </Staff>
       <trackName>Bass Guitar</trackName>
-      <Instrument>
+      <Instrument id="bass-guitar">
         <longName>Bass Guitar</longName>
         <shortName>B. Guit.</shortName>
         <trackName>Bass Guitar</trackName>
@@ -402,7 +403,7 @@
         <distOffset>1.5</distOffset>
         </Staff>
       <trackName>Drumset</trackName>
-      <Instrument>
+      <Instrument id="drumset">
         <longName>Drumset</longName>
         <shortName>Drs.</shortName>
         <trackName>Drumset</trackName>

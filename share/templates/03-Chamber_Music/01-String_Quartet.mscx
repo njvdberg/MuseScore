@@ -9,6 +9,7 @@
       </Synthesizer>
     <Division>480</Division>
     <Style>
+      <enableVerticalSpread>1</enableVerticalSpread>
       <concertPitch>1</concertPitch>
       <Spatium>1.76389</Spatium>
       </Style>
@@ -36,7 +37,7 @@
         <barLineSpan>3</barLineSpan>
         </Staff>
       <trackName>Violin I</trackName>
-      <Instrument>
+      <Instrument id="violin">
         <longName>Violin I</longName>
         <trackName>Violin</trackName>
         <minPitchP>55</minPitchP>
@@ -113,7 +114,7 @@
         <barLineSpan>2</barLineSpan>
         </Staff>
       <trackName>Violin II</trackName>
-      <Instrument>
+      <Instrumen id="violin"t>
         <longName>Violin II</longName>
         <trackName>Violin</trackName>
         <minPitchP>55</minPitchP>
@@ -191,7 +192,7 @@
         <barLineSpan>1</barLineSpan>
         </Staff>
       <trackName>Viola</trackName>
-      <Instrument>
+      <Instrument id="viola">
         <longName>Viola</longName>
         <trackName>Viola</trackName>
         <minPitchP>48</minPitchP>
@@ -269,7 +270,7 @@
         <defaultClef>F</defaultClef>
         </Staff>
       <trackName>Violoncello</trackName>
-      <Instrument>
+      <Instrument id="violoncello">
         <longName>Violoncello</longName>
         <trackName>Violoncello</trackName>
         <minPitchP>36</minPitchP>

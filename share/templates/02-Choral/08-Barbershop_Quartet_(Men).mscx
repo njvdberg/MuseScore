@@ -9,6 +9,7 @@
       </Synthesizer>
     <Division>480</Division>
     <Style>
+      <enableVerticalSpread>1</enableVerticalSpread>
       <Spatium>1.76389</Spatium>
       </Style>
     <showInvisible>1</showInvisible>
@@ -36,7 +37,7 @@
         <bracket type="0" span="2" col="0"/>
         </Staff>
       <trackName>TENOR LEAD</trackName>
-      <Instrument>
+      <Instrument id="tenor">
         <longName>TENOR
 LEAD</longName>
         <trackName>Tenor/Lead</trackName>
@@ -106,7 +107,7 @@ LEAD</longName>
         <mergeMatchingRests>1</mergeMatchingRests>
         </Staff>
       <trackName>BARITONE BASS</trackName>
-      <Instrument>
+      <Instrument id="bass">
         <longName>BARI
 BASS</longName>
         <trackName>Baritone/Bass</trackName>

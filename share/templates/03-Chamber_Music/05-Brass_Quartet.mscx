@@ -9,6 +9,7 @@
       </Synthesizer>
     <Division>480</Division>
     <Style>
+      <enableVerticalSpread>1</enableVerticalSpread>
       <concertPitch>1</concertPitch>
       <Spatium>1.76389</Spatium>
       </Style>
@@ -36,7 +37,7 @@
         <barLineSpan>3</barLineSpan>
         </Staff>
       <trackName>B♭ Trumpet 1</trackName>
-      <Instrument>
+      <Instrument id="bb-trumpet">
         <longName>B♭ Trumpet 1</longName>
         <trackName>B♭ Trumpet</trackName>
         <minPitchP>52</minPitchP>
@@ -104,7 +105,7 @@
         <barLineSpan>2</barLineSpan>
         </Staff>
       <trackName>B♭ Trumpet 2</trackName>
-      <Instrument>
+      <Instrument id="bb-trumpet">
         <longName>B♭ Trumpet 2</longName>
         <trackName>B♭ Trumpet</trackName>
         <minPitchP>52</minPitchP>
@@ -161,7 +162,7 @@
         <barLineSpan>1</barLineSpan>
         </Staff>
       <trackName>Trombone</trackName>
-      <Instrument>
+      <Instrument id="trombone">
         <longName>Trombone</longName>
         <trackName>Trombone</trackName>
         <minPitchP>35</minPitchP>
@@ -212,7 +213,7 @@
         <defaultClef>F</defaultClef>
         </Staff>
       <trackName>Tuba</trackName>
-      <Instrument>
+      <Instrument id="tuba">
         <longName>Tuba</longName>
         <trackName>Tuba</trackName>
         <minPitchP>22</minPitchP>

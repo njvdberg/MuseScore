@@ -7,6 +7,7 @@
     <currentLayer>0</currentLayer>
     <Division>480</Division>
     <Style>
+      <enableVerticalSpread>1</enableVerticalSpread>
       <Spatium>0.95</Spatium>
       </Style>
     <showInvisible>1</showInvisible>
@@ -34,7 +35,7 @@
         <barLineSpan>7</barLineSpan>
         </Staff>
       <trackName>Flute 1</trackName>
-      <Instrument>
+      <Instrument id="flute">
         <longName>Flute 1</longName>
         <shortName>Fl. 1</shortName>
         <trackName>Flute</trackName>
@@ -97,7 +98,7 @@
         <barLineSpan>6</barLineSpan>
         </Staff>
       <trackName>Flute 2</trackName>
-      <Instrument>
+      <Instrument id="flute">
         <longName>Flute 2</longName>
         <shortName>Fl. 2</shortName>
         <trackName>Flute</trackName>
@@ -149,7 +150,7 @@
         <barLineSpan>5</barLineSpan>
         </Staff>
       <trackName>Oboe 1</trackName>
-      <Instrument>
+      <Instrument id="oboe">
         <longName>Oboe 1</longName>
         <shortName>Ob. 1</shortName>
         <trackName>Oboe</trackName>
@@ -200,7 +201,7 @@
         <barLineSpan>4</barLineSpan>
         </Staff>
       <trackName>Oboe 2</trackName>
-      <Instrument>
+      <Instrument id="oboe">
         <longName>Oboe 2</longName>
         <shortName>Ob. 2</shortName>
         <trackName>Oboe</trackName>
@@ -252,7 +253,7 @@
         <barLineSpan>3</barLineSpan>
         </Staff>
       <trackName>B♭ Clarinet 1</trackName>
-      <Instrument>
+      <Instrument id="bb-clarinet">
         <longName>B♭ Clarinet 1</longName>
         <shortName>B♭ Cl. 1</shortName>
         <trackName>B♭ Clarinet</trackName>
@@ -305,7 +306,7 @@
         <barLineSpan>2</barLineSpan>
         </Staff>
       <trackName>B♭ Clarinet 2</trackName>
-      <Instrument>
+      <Instrument id="bb-clarinet">
         <longName>B♭ Clarinet 2</longName>
         <shortName>B♭ Cl. 2</shortName>
         <trackName>B♭ Clarinet</trackName>
@@ -360,7 +361,7 @@
         <barLineSpan>1</barLineSpan>
         </Staff>
       <trackName>Bassoon 1</trackName>
-      <Instrument>
+      <Instrument id="bassoon">
         <longName>Bassoon 1</longName>
         <shortName>Bsn. 1</shortName>
         <trackName>Bassoon</trackName>
@@ -412,7 +413,7 @@
         <defaultClef>F</defaultClef>
         </Staff>
       <trackName>Bassoon 2</trackName>
-      <Instrument>
+      <Instrument id="bassoon">
         <longName>Bassoon 2</longName>
         <shortName>Bsn. 2</shortName>
         <trackName>Bassoon</trackName>
@@ -466,7 +467,7 @@
         <barLineSpan>6</barLineSpan>
         </Staff>
       <trackName>F Horn 1 &amp; 3</trackName>
-      <Instrument>
+      <Instrument id="horn">
         <longName>F Horn 1 &amp; 3</longName>
         <shortName>F Hn. 1 3</shortName>
         <trackName>Horn in F</trackName>
@@ -519,7 +520,7 @@
         <barLineSpan>5</barLineSpan>
         </Staff>
       <trackName>F Horn 2 &amp; 4</trackName>
-      <Instrument>
+      <Instrument id="horn">
         <longName>F Horn 2 &amp; 4</longName>
         <shortName>F Hn. 2 4</shortName>
         <trackName>Horn in F</trackName>
@@ -573,7 +574,7 @@
         <barLineSpan>4</barLineSpan>
         </Staff>
       <trackName>B♭ Trumpet 1</trackName>
-      <Instrument>
+      <Instrument id="bb-trumpet">
         <longName>B♭ Trumpet 1</longName>
         <shortName>B♭ Tpt. 1</shortName>
         <trackName>B♭ Trumpet</trackName>
@@ -630,7 +631,7 @@
         <barLineSpan>3</barLineSpan>
         </Staff>
       <trackName>B♭ Trumpet 2</trackName>
-      <Instrument>
+      <Instrument id="bb-trumpet">
         <longName>B♭ Trumpet 2</longName>
         <shortName>B♭ Tpt. 2</shortName>
         <trackName>B♭ Trumpet</trackName>
@@ -689,7 +690,7 @@
         <barLineSpan>2</barLineSpan>
         </Staff>
       <trackName>Trombone 1</trackName>
-      <Instrument>
+      <Instrument id="trombone">
         <longName>Trombone 1</longName>
         <shortName>Tbn. 1</shortName>
         <trackName>Trombone</trackName>
@@ -742,7 +743,7 @@
         <barLineSpan>1</barLineSpan>
         </Staff>
       <trackName>Trombone 2</trackName>
-      <Instrument>
+      <Instrument id="trombone">
         <longName>Trombone 2</longName>
         <shortName>Tbn. 2</shortName>
         <trackName>Trombone</trackName>
@@ -794,7 +795,7 @@
         <defaultClef>F</defaultClef>
         </Staff>
       <trackName>Tuba</trackName>
-      <Instrument>
+      <Instrument id="tuba">
         <longName>Tuba</longName>
         <shortName>Tba.</shortName>
         <trackName>Tuba</trackName>
@@ -847,7 +848,7 @@
         <bracket type="0" span="1" col="0"/>
         </Staff>
       <trackName>Timpani</trackName>
-      <Instrument>
+      <Instrument id="timpani">
         <longName>Timpani</longName>
         <shortName>Timp.</shortName>
         <trackName>Timpani</trackName>
@@ -902,7 +903,7 @@
         <bracket type="0" span="3" col="0"/>
         </Staff>
       <trackName>Snare Drum</trackName>
-      <Instrument>
+      <Instrument id="snare-drum">
         <longName>Snare Drum</longName>
         <shortName>Sn. Dr.</shortName>
         <trackName>Snare Drum</trackName>
@@ -970,7 +971,7 @@
         <defaultClef>PERC</defaultClef>
         </Staff>
       <trackName>Bass Drum</trackName>
-      <Instrument>
+      <Instrument id="bass-drum">
         <longName>Bass Drum</longName>
         <shortName>B. Dr.</shortName>
         <trackName>Bass Drum</trackName>
@@ -1030,7 +1031,7 @@
         <defaultClef>PERC</defaultClef>
         </Staff>
       <trackName>Cymbal</trackName>
-      <Instrument>
+      <Instrument id="cymbal">
         <longName>Cymbal</longName>
         <shortName>Cym.</shortName>
         <trackName>Cymbal</trackName>
@@ -1096,7 +1097,7 @@
         <defaultClef>F</defaultClef>
         </Staff>
       <trackName>Harp</trackName>
-      <Instrument>
+      <Instrument id="harp">
         <longName>Harp</longName>
         <shortName>Hrp.</shortName>
         <trackName>Harp</trackName>
@@ -1158,7 +1159,7 @@
         <barLineSpan>4</barLineSpan>
         </Staff>
       <trackName>Violins 1</trackName>
-      <Instrument>
+      <Instrument id="violins">
         <longName>Violins 1</longName>
         <shortName>Vlns. 1</shortName>
         <trackName>Violins</trackName>
@@ -1220,7 +1221,7 @@
         <barLineSpan>3</barLineSpan>
         </Staff>
       <trackName>Violins 2</trackName>
-      <Instrument>
+      <Instrument id="violins">
         <longName>Violins 2</longName>
         <shortName>Vlns. 2</shortName>
         <trackName>Violins</trackName>
@@ -1283,7 +1284,7 @@
         <barLineSpan>2</barLineSpan>
         </Staff>
       <trackName>Violas</trackName>
-      <Instrument>
+      <Instrument id="violas">
         <longName>Violas</longName>
         <shortName>Vlas.</shortName>
         <trackName>Violas</trackName>
@@ -1347,7 +1348,7 @@
         <barLineSpan>1</barLineSpan>
         </Staff>
       <trackName>Violoncellos</trackName>
-      <Instrument>
+      <Instrument id="violoncellos">
         <longName>Violoncellos</longName>
         <shortName>Vcs.</shortName>
         <trackName>Violoncellos</trackName>
@@ -1411,7 +1412,7 @@
         <defaultTransposingClef>F</defaultTransposingClef>
         </Staff>
       <trackName>Contrabasses</trackName>
-      <Instrument>
+      <Instrument id="contrabasses">
         <longName>Contrabasses</longName>
         <shortName>Cbs.</shortName>
         <trackName>Contrabasses</trackName>

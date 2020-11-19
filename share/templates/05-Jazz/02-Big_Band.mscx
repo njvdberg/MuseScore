@@ -9,6 +9,7 @@
       </Synthesizer>
     <Division>480</Division>
     <Style>
+      <enableVerticalSpread>1</enableVerticalSpread>
       <lyricsLineThickness>0.3</lyricsLineThickness>
       <lyricsOddFontFace>MuseJazz Text</lyricsOddFontFace>
       <lyricsEvenFontFace>MuseJazz Text</lyricsEvenFontFace>
@@ -120,7 +121,7 @@
         <bracket type="0" span="5" col="0"/>
         </Staff>
       <trackName>Alto Sax 1</trackName>
-      <Instrument>
+      <Instrument id="alto-saxophone">
         <longName>Alto Sax 1</longName>
         <shortName>Alto 1</shortName>
         <trackName>Alto Saxophone</trackName>
@@ -186,7 +187,7 @@
           </StaffType>
         </Staff>
       <trackName>Alto Sax 2</trackName>
-      <Instrument>
+      <Instrument id="alto-saxophone">
         <longName>Alto Sax 2</longName>
         <shortName>Alto 2</shortName>
         <trackName>Alto Saxophone</trackName>
@@ -242,7 +243,7 @@
         <defaultTransposingClef>G</defaultTransposingClef>
         </Staff>
       <trackName>Tenor Sax 1</trackName>
-      <Instrument>
+      <Instrument id="tenor-saxophone">
         <longName>Tenor Sax 1</longName>
         <shortName>Tenor 1</shortName>
         <trackName>Tenor Saxophone</trackName>
@@ -300,7 +301,7 @@
         <defaultTransposingClef>G</defaultTransposingClef>
         </Staff>
       <trackName>Tenor Sax 2</trackName>
-      <Instrument>
+      <Instrument id="tenor-saxophone">
         <longName>Tenor Sax 2</longName>
         <shortName>Tenor 2</shortName>
         <trackName>Tenor Saxophone</trackName>
@@ -358,7 +359,7 @@
         <defaultTransposingClef>G</defaultTransposingClef>
         </Staff>
       <trackName>Bari Sax</trackName>
-      <Instrument>
+      <Instrument id="baritone-saxophone">
         <longName>Bari Sax</longName>
         <shortName>Bari</shortName>
         <trackName>Baritone Saxophone</trackName>
@@ -415,7 +416,7 @@
         <bracket type="0" span="4" col="0"/>
         </Staff>
       <trackName>Trumpet 1</trackName>
-      <Instrument>
+      <Instrument id="bb-trumpet">
         <longName>Trumpet 1</longName>
         <shortName>Tpt. 1</shortName>
         <trackName>B♭ Trumpet</trackName>
@@ -475,7 +476,7 @@
           </StaffType>
         </Staff>
       <trackName>Trumpet 2</trackName>
-      <Instrument>
+      <Instrument id="bb-trumpet">
         <longName>Trumpet 2</longName>
         <shortName>Tpt. 2</shortName>
         <trackName>B♭ Trumpet</trackName>
@@ -535,7 +536,7 @@
           </StaffType>
         </Staff>
       <trackName>Trumpet 3</trackName>
-      <Instrument>
+      <Instrument id="bb-trumpet">
         <longName>Trumpet 3</longName>
         <shortName>Tpt. 3</shortName>
         <trackName>B♭ Trumpet</trackName>
@@ -595,7 +596,7 @@
           </StaffType>
         </Staff>
       <trackName>Trumpet 4</trackName>
-      <Instrument>
+      <Instrument id="bb-trumpet">
         <longName>Trumpet 4</longName>
         <shortName>Tpt. 4</shortName>
         <trackName>B♭ Trumpet</trackName>
@@ -657,7 +658,7 @@
         <bracket type="0" span="4" col="0"/>
         </Staff>
       <trackName>Trombone 1</trackName>
-      <Instrument>
+      <Instrument id="trombone">
         <longName>Trombone 1</longName>
         <shortName>Tbn. 1</shortName>
         <trackName>Trombone</trackName>
@@ -711,7 +712,7 @@
         <defaultClef>F</defaultClef>
         </Staff>
       <trackName>Trombone 2</trackName>
-      <Instrument>
+      <Instrument id="trombone">
         <longName>Trombone 2</longName>
         <shortName>Tbn. 2</shortName>
         <trackName>Trombone</trackName>
@@ -765,7 +766,7 @@
         <defaultClef>F</defaultClef>
         </Staff>
       <trackName>Trombone 3</trackName>
-      <Instrument>
+      <Instrument id="trombone">
         <longName>Trombone 3</longName>
         <shortName>Tbn. 3</shortName>
         <trackName>Trombone</trackName>
@@ -819,7 +820,7 @@
         <defaultClef>F</defaultClef>
         </Staff>
       <trackName>Trombone 4</trackName>
-      <Instrument>
+      <Instrument id="trombone">
         <longName>Trombone 4</longName>
         <shortName>Tbn. 4</shortName>
         <trackName>Trombone</trackName>
@@ -873,7 +874,7 @@
         <defaultClef>G8vb</defaultClef>
         </Staff>
       <trackName>Guitar</trackName>
-      <Instrument>
+      <Instrument id="electric-guitar">
         <longName>Guitar</longName>
         <shortName>Gtr.</shortName>
         <trackName>Electric Guitar</trackName>
@@ -975,7 +976,7 @@
         <defaultClef>F</defaultClef>
         </Staff>
       <trackName>Piano</trackName>
-      <Instrument>
+      <Instrument id="piano">
         <longName>Piano</longName>
         <shortName>Pno.</shortName>
         <trackName>Piano</trackName>
@@ -1030,7 +1031,7 @@
         <defaultTransposingClef>F</defaultTransposingClef>
         </Staff>
       <trackName>Bass</trackName>
-      <Instrument>
+      <Instrument id="acoustic-bass">
         <longName>Bass</longName>
         <shortName>Bass</shortName>
         <trackName>Acoustic Bass</trackName>
@@ -1119,7 +1120,7 @@
         <defaultClef>PERC</defaultClef>
         </Staff>
       <trackName>Drums</trackName>
-      <Instrument>
+      <Instrument id="drumset">
         <longName>Drums</longName>
         <shortName>Drums</shortName>
         <trackName>Drumset</trackName>

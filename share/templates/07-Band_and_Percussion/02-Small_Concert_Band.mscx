@@ -9,6 +9,7 @@
       </Synthesizer>
     <Division>480</Division>
     <Style>
+      <enableVerticalSpread>1</enableVerticalSpread>
       <Spatium>1.164</Spatium>
       </Style>
     <showInvisible>1</showInvisible>
@@ -35,7 +36,7 @@
         <barLineSpan>8</barLineSpan>
         </Staff>
       <trackName>Flute</trackName>
-      <Instrument>
+      <Instrument id="flute">
         <longName>Flute</longName>
         <shortName>Fl.</shortName>
         <trackName>Flute</trackName>
@@ -98,7 +99,7 @@
         <barLineSpan>7</barLineSpan>
         </Staff>
       <trackName>Oboe</trackName>
-      <Instrument>
+      <Instrument id="oboe">
         <longName>Oboe</longName>
         <shortName>Ob.</shortName>
         <trackName>Oboe</trackName>
@@ -150,7 +151,7 @@
         <barLineSpan>6</barLineSpan>
         </Staff>
       <trackName>Bassoon</trackName>
-      <Instrument>
+      <Instrument id=bassoon">
         <longName>Bassoon</longName>
         <shortName>Bsn.</shortName>
         <trackName>Bassoon</trackName>
@@ -203,7 +204,7 @@
         <barLineSpan>5</barLineSpan>
         </Staff>
       <trackName>B♭ Clarinet 1</trackName>
-      <Instrument>
+      <Instrument id="bb-clarinet">
         <longName>B♭ Clarinet 1</longName>
         <shortName>B♭ Cl. 1</shortName>
         <trackName>B♭ Clarinet</trackName>
@@ -256,7 +257,7 @@
         <barLineSpan>4</barLineSpan>
         </Staff>
       <trackName>B♭ Clarinet 2</trackName>
-      <Instrument>
+      <Instrument id="bb-clarinet">
         <longName>B♭ Clarinet 2</longName>
         <shortName>B♭ Cl. 2</shortName>
         <trackName>B♭ Clarinet</trackName>
@@ -311,7 +312,7 @@
         <barLineSpan>3</barLineSpan>
         </Staff>
       <trackName>Bass Clarinet</trackName>
-      <Instrument>
+      <Instrument id="bass-clarinet">
         <longName>Bass Clarinet</longName>
         <shortName>B. Cl.</shortName>
         <trackName>Bass Clarinet</trackName>
@@ -367,7 +368,7 @@
         <barLineSpan>2</barLineSpan>
         </Staff>
       <trackName>Alto Saxophone</trackName>
-      <Instrument>
+      <Instrument id="alto-saxophone">
         <longName>Alto Saxophone</longName>
         <shortName>A. Sax.</shortName>
         <trackName>Alto Saxophone</trackName>
@@ -422,7 +423,7 @@
         <barLineSpan>1</barLineSpan>
         </Staff>
       <trackName>Tenor Saxophone</trackName>
-      <Instrument>
+      <Instrument id="tenor-saxophone">
         <longName>Tenor Saxophone</longName>
         <shortName>T. Sax.</shortName>
         <trackName>Tenor Saxophone</trackName>
@@ -478,7 +479,7 @@
         <defaultTransposingClef>G</defaultTransposingClef>
         </Staff>
       <trackName>Baritone Saxophone</trackName>
-      <Instrument>
+      <Instrument id="baritone-saxophone">
         <longName>Baritone Saxophone</longName>
         <shortName>Bar. Sax.</shortName>
         <trackName>Baritone Saxophone</trackName>
@@ -534,7 +535,7 @@
         <barLineSpan>6</barLineSpan>
         </Staff>
       <trackName>Horn in F</trackName>
-      <Instrument>
+      <Instrument id="horn">
         <longName>Horn in F</longName>
         <shortName>F Hn.</shortName>
         <trackName>Horn in F</trackName>
@@ -588,7 +589,7 @@
         <barLineSpan>5</barLineSpan>
         </Staff>
       <trackName>B♭ Trumpet 1</trackName>
-      <Instrument>
+      <Instrument id="bb-trumpet">
         <longName>B♭ Trumpet 1</longName>
         <shortName>B♭ Tpt. 1</shortName>
         <trackName>B♭ Trumpet</trackName>
@@ -645,7 +646,7 @@
         <barLineSpan>4</barLineSpan>
         </Staff>
       <trackName>B♭ Trumpet 2</trackName>
-      <Instrument>
+      <Instrument id="bb-trumpet">
         <longName>B♭ Trumpet 2</longName>
         <shortName>B♭ Tpt. 2</shortName>
         <trackName>B♭ Trumpet</trackName>
@@ -704,7 +705,7 @@
         <barLineSpan>3</barLineSpan>
         </Staff>
       <trackName>Trombone 1</trackName>
-      <Instrument>
+      <Instrument id="trombone">
         <longName>Trombone 1</longName>
         <shortName>Tbn. 1</shortName>
         <trackName>Trombone</trackName>
@@ -757,7 +758,7 @@
         <barLineSpan>2</barLineSpan>
         </Staff>
       <trackName>Trombone 2/Bass Trombone</trackName>
-      <Instrument>
+      <Instrument id="trombone">
         <longName>Trombone 2
 Bass Trombone</longName>
         <shortName>Tbn. 2
@@ -812,7 +813,7 @@ B. Tbn.</shortName>
         <barLineSpan>1</barLineSpan>
         </Staff>
       <trackName>Euphonium</trackName>
-      <Instrument>
+      <Instrument id="euphonium">
         <longName>Euphonium</longName>
         <shortName>Euph.</shortName>
         <trackName>Euphonium</trackName>
@@ -864,7 +865,7 @@ B. Tbn.</shortName>
         <defaultClef>F</defaultClef>
         </Staff>
       <trackName>Tuba</trackName>
-      <Instrument>
+      <Instrument id="tuba">
         <longName>Tuba</longName>
         <shortName>Tba.</shortName>
         <trackName>Tuba</trackName>
@@ -918,7 +919,7 @@ B. Tbn.</shortName>
         <barLineSpan>3</barLineSpan>
         </Staff>
       <trackName>Timpani</trackName>
-      <Instrument>
+      <Instrument id="timpani">
         <longName>Timpani</longName>
         <shortName>Timp.</shortName>
         <trackName>Timpani</trackName>
@@ -972,7 +973,7 @@ B. Tbn.</shortName>
         <barLineSpan>2</barLineSpan>
         </Staff>
       <trackName>Glockenspiel</trackName>
-      <Instrument>
+      <Instrument id="glockenspiel">
         <longName>Glockenspiel</longName>
         <shortName>Glk.</shortName>
         <trackName>Glockenspiel</trackName>
@@ -1029,7 +1030,7 @@ B. Tbn.</shortName>
         <barLineSpan>1</barLineSpan>
         </Staff>
       <trackName>Percussion 1</trackName>
-      <Instrument>
+      <Instrument id="drumset">
         <longName>Percussion 1</longName>
         <shortName>Perc. 1</shortName>
         <trackName>Percussion</trackName>
@@ -1234,7 +1235,7 @@ B. Tbn.</shortName>
         <defaultClef>PERC</defaultClef>
         </Staff>
       <trackName>Percussion 2</trackName>
-      <Instrument>
+      <Instrument id="drumset">
         <longName>Percussion 2</longName>
         <shortName>Perc. 2</shortName>
         <trackName>Percussion</trackName>

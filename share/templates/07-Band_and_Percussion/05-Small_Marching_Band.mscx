@@ -9,6 +9,7 @@
       </Synthesizer>
     <Division>480</Division>
     <Style>
+      <enableVerticalSpread>1</enableVerticalSpread>
       <Spatium>1.3</Spatium>
       </Style>
     <showInvisible>1</showInvisible>
@@ -35,7 +36,7 @@
         <barLineSpan>3</barLineSpan>
         </Staff>
       <trackName>Flute</trackName>
-      <Instrument>
+      <Instrument id="flute">
         <longName>Flute</longName>
         <shortName>Fl.</shortName>
         <trackName>Flute</trackName>
@@ -99,7 +100,7 @@
         <barLineSpan>2</barLineSpan>
         </Staff>
       <trackName>B♭ Clarinet 1</trackName>
-      <Instrument>
+      <Instrument id="bb-clarinet">
         <longName>Clarinet 1</longName>
         <shortName>Cl. 1</shortName>
         <trackName>B♭ Clarinet</trackName>
@@ -152,7 +153,7 @@
         <barLineSpan>1</barLineSpan>
         </Staff>
       <trackName>B♭ Clarinet 2</trackName>
-      <Instrument>
+      <Instrument id="bb-clarinet">
         <longName>Clarinet 2</longName>
         <shortName>Cl. 2</shortName>
         <trackName>B♭ Clarinet</trackName>
@@ -206,7 +207,7 @@
         <defaultTransposingClef>G</defaultTransposingClef>
         </Staff>
       <trackName>Bass Clarinet</trackName>
-      <Instrument>
+      <Instrument id="bass-clarinet">
         <longName>Bass Clarinet</longName>
         <shortName>B. Cl.</shortName>
         <trackName>Bass Clarinet</trackName>
@@ -262,7 +263,7 @@
         <barLineSpan>2</barLineSpan>
         </Staff>
       <trackName>Alto Saxophone</trackName>
-      <Instrument>
+      <Instrument id="alto-saxophone">
         <longName>Alto Sax</longName>
         <shortName>A. Sax.</shortName>
         <trackName>Alto Saxophone</trackName>
@@ -317,7 +318,7 @@
         <barLineSpan>1</barLineSpan>
         </Staff>
       <trackName>Tenor Saxophone</trackName>
-      <Instrument>
+      <Instrument id="tenor-saxophone">
         <longName>Tenor Sax</longName>
         <shortName>T. Sax.</shortName>
         <trackName>Tenor Saxophone</trackName>
@@ -373,7 +374,7 @@
         <defaultTransposingClef>G</defaultTransposingClef>
         </Staff>
       <trackName>Baritone Saxophone</trackName>
-      <Instrument>
+      <Instrument id="baritone-saxophone">
         <longName>Baritone Sax</longName>
         <shortName>Bar. Sax.</shortName>
         <trackName>Baritone Saxophone</trackName>
@@ -430,7 +431,7 @@
         <barLineSpan>5</barLineSpan>
         </Staff>
       <trackName>B♭ Trumpet 1</trackName>
-      <Instrument>
+      <Instrument id="bb-trumpet">
         <longName>Trumpet 1</longName>
         <shortName>Tpt. 1</shortName>
         <trackName>B♭ Trumpet</trackName>
@@ -487,7 +488,7 @@
         <barLineSpan>4</barLineSpan>
         </Staff>
       <trackName>B♭ Trumpet 2</trackName>
-      <Instrument>
+      <Instrument id="bb-trumpet">
         <longName>Trumpet 2</longName>
         <shortName>Tpt. 2</shortName>
         <trackName>B♭ Trumpet</trackName>
@@ -544,7 +545,7 @@
         <barLineSpan>3</barLineSpan>
         </Staff>
       <trackName>Mellophone</trackName>
-      <Instrument>
+      <Instrument id="mellophone">
         <longName>Mellophone</longName>
         <shortName>Mph.</shortName>
         <trackName>Mellophone</trackName>
@@ -598,7 +599,7 @@
         <barLineSpan>2</barLineSpan>
         </Staff>
       <trackName>Trombone</trackName>
-      <Instrument>
+      <Instrument id="trombone">
         <longName>Trombone</longName>
         <shortName>Tbn.</shortName>
         <trackName>Trombone</trackName>
@@ -651,7 +652,7 @@
         <barLineSpan>1</barLineSpan>
         </Staff>
       <trackName>Baritone</trackName>
-      <Instrument>
+      <Instrument id="baritone-horn">
         <longName>Baritone</longName>
         <shortName>Btn.</shortName>
         <trackName>Baritone Horn</trackName>
@@ -703,7 +704,7 @@
         <defaultClef>F</defaultClef>
         </Staff>
       <trackName>Sousaphone</trackName>
-      <Instrument>
+      <Instrument id="sousaphone">
         <longName>Sousaphone</longName>
         <shortName>Sphn.</shortName>
         <trackName>Sousaphone</trackName>
@@ -756,7 +757,7 @@
         <defaultTransposingClef>G</defaultTransposingClef>
         </Staff>
       <trackName>Mallets</trackName>
-      <Instrument>
+      <Instrument id="xylophone">
         <longName>Mallets</longName>
         <shortName>Mlts.</shortName>
         <trackName>Xylophone</trackName>
@@ -814,7 +815,7 @@
         <barLineSpan>3</barLineSpan>
         </Staff>
       <trackName>Snare Drum</trackName>
-      <Instrument>
+      <Instrument id="snare-drum">
         <longName>Snare Drum</longName>
         <shortName>S.D.</shortName>
         <trackName>Snare Drum</trackName>
@@ -954,7 +955,7 @@
         <barLineSpan>2</barLineSpan>
         </Staff>
       <trackName>Tenor Drums</trackName>
-      <Instrument>
+      <Instrument id="marching-tenor-drums">
         <longName>Tenor Drums</longName>
         <shortName>T.D.</shortName>
         <trackName>Tenor Drums</trackName>
@@ -1171,7 +1172,7 @@
         <barLineSpan>1</barLineSpan>
         </Staff>
       <trackName>Bass Drums</trackName>
-      <Instrument>
+      <Instrument id="marching-bass-drums">
         <longName>Bass Drums</longName>
         <shortName>B.D.</shortName>
         <trackName>Bass Drums</trackName>
@@ -1303,7 +1304,7 @@
         <defaultClef>PERC</defaultClef>
         </Staff>
       <trackName>Cymbals</trackName>
-      <Instrument>
+      <Instrument id="marching-cymbals">
         <longName>Cymbals</longName>
         <shortName>Cym.</shortName>
         <trackName>Cymbals</trackName>

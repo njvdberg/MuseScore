@@ -9,6 +9,7 @@
       </Synthesizer>
     <Division>480</Division>
     <Style>
+      <enableVerticalSpread>1</enableVerticalSpread>
       <lyricsLineThickness>0.3</lyricsLineThickness>
       <lyricsOddFontFace>MuseJazz Text</lyricsOddFontFace>
       <lyricsEvenFontFace>MuseJazz Text</lyricsEvenFontFace>
@@ -121,7 +122,7 @@
           </StaffType>
         </Staff>
       <trackName>Piano</trackName>
-      <Instrument>
+      <Instrument id="piano">
         <longName>Piano</longName>
         <shortName>Pno.</shortName>
         <trackName>Piano</trackName>

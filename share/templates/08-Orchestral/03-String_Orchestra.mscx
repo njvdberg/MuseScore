@@ -7,6 +7,7 @@
     <currentLayer>0</currentLayer>
     <Division>480</Division>
     <Style>
+      <enableVerticalSpread>1</enableVerticalSpread>
       <staffUpperBorder>10</staffUpperBorder>
       <minSystemDistance>13.5</minSystemDistance>
       <Spatium>1.76389</Spatium>
@@ -35,7 +36,7 @@
         <barLineSpan>4</barLineSpan>
         </Staff>
       <trackName>Violin I</trackName>
-      <Instrument>
+      <Instrument id="violin">
         <longName>Violin I</longName>
         <shortName>Vln. I</shortName>
         <trackName>Violin</trackName>
@@ -113,7 +114,7 @@
         <barLineSpan>3</barLineSpan>
         </Staff>
       <trackName>Violin II</trackName>
-      <Instrument>
+      <Instrument id="violin">
         <longName>Violin II</longName>
         <shortName>Vln. II</shortName>
         <trackName>Violin</trackName>
@@ -180,7 +181,7 @@
         <barLineSpan>2</barLineSpan>
         </Staff>
       <trackName>Viola</trackName>
-      <Instrument>
+      <Instrument id="viola'>
         <longName>Viola</longName>
         <shortName>Vla.</shortName>
         <trackName>Viola</trackName>
@@ -248,7 +249,7 @@
         <barLineSpan>1</barLineSpan>
         </Staff>
       <trackName>Violoncello</trackName>
-      <Instrument>
+      <Instrument id="violoncello">
         <longName>Violoncello</longName>
         <shortName>Vc.</shortName>
         <trackName>Violoncello</trackName>
@@ -316,7 +317,7 @@
         <defaultTransposingClef>F</defaultTransposingClef>
         </Staff>
       <trackName>Contrabass</trackName>
-      <Instrument>
+      <Instrument id="contrabass">
         <longName>Contrabass</longName>
         <shortName>Cb.</shortName>
         <trackName>Contrabass</trackName>

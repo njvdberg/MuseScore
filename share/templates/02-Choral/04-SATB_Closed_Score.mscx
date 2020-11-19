@@ -9,6 +9,7 @@
       </Synthesizer>
     <Division>480</Division>
     <Style>
+      <enableVerticalSpread>1</enableVerticalSpread>
       <Spatium>1.76389</Spatium>
       </Style>
     <showInvisible>1</showInvisible>
@@ -35,7 +36,7 @@
         <bracket type="0" span="2" col="0"/>
         </Staff>
       <trackName>Women</trackName>
-      <Instrument>
+      <Instrument id="women">
         <longName>S
 A</longName>
         <trackName>Women</trackName>
@@ -104,7 +105,7 @@ A</longName>
         <mergeMatchingRests>1</mergeMatchingRests>
         </Staff>
       <trackName>Men</trackName>
-      <Instrument>
+      <Instrument id="men">
         <longName>T
 B</longName>
         <trackName>Men</trackName>
